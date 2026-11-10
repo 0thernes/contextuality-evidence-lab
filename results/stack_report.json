@@ -1,0 +1,308 @@
+{
+  "status": "pass",
+  "classification": "Classical software experiment; no quantum hardware or certified entropy",
+  "elapsed_seconds": 6.046999999991385,
+  "platform": "Windows-10-10.0.29704-SP0",
+  "python": "3.9.13",
+  "numpy": "2.0.2",
+  "node": "v25.8.2",
+  "gcc": "gcc (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r2) 16.1.0",
+  "verified_vendor_files": 15,
+  "qrng": {
+    "status": "pass",
+    "seed": 20261110,
+    "same_build_replay_identical": true,
+    "different_seed_differs": true,
+    "stream_4096_sha256": "872e80e7fb9d43a2572439814696799c668cde4ea89ac70f9873d65df908769b",
+    "binary_sha256": "c5daa7237bbc668299ba581d511834c0f7fa5e0ab1737ffa29ea3cd5473aeb08"
+  },
+  "moonlab": {
+    "status": "pass",
+    "engine": "Pinned Tsotchke Moonlab classical CPU/WASM simulator",
+    "qubits": 2,
+    "observables": [
+      "XI",
+      "IX",
+      "XX",
+      "IZ",
+      "ZI",
+      "ZZ",
+      "XZ",
+      "ZX",
+      "YY"
+    ],
+    "contexts": [
+      {
+        "indices": [
+          0,
+          1,
+          2
+        ],
+        "sign": 1
+      },
+      {
+        "indices": [
+          3,
+          4,
+          5
+        ],
+        "sign": 1
+      },
+      {
+        "indices": [
+          6,
+          7,
+          8
+        ],
+        "sign": 1
+      },
+      {
+        "indices": [
+          0,
+          3,
+          6
+        ],
+        "sign": 1
+      },
+      {
+        "indices": [
+          1,
+          4,
+          7
+        ],
+        "sign": 1
+      },
+      {
+        "indices": [
+          2,
+          5,
+          8
+        ],
+        "sign": -1
+      }
+    ],
+    "exact_operator_sign_checks": 6,
+    "operator_sign_mutation_rejections": 6,
+    "ideal_state_checks": [
+      {
+        "preparation": "zero",
+        "components": 1,
+        "trials": 96,
+        "agreed": 96
+      },
+      {
+        "preparation": "plus",
+        "components": 1,
+        "trials": 96,
+        "agreed": 96
+      },
+      {
+        "preparation": "bell",
+        "components": 1,
+        "trials": 96,
+        "agreed": 96
+      },
+      {
+        "preparation": "complex",
+        "components": 1,
+        "trials": 96,
+        "agreed": 96
+      },
+      {
+        "preparation": "basis",
+        "components": 4,
+        "trials": 384,
+        "agreed": 384
+      }
+    ],
+    "ideal_check_shots": 768,
+    "sampled_ideal_successes": 6000,
+    "max_pauli_expectation_oracle_error": 6.661338147750939e-16,
+    "repeated_measurement_failures": 0,
+    "flipped_sign_shot_rejections": 768,
+    "gate_calls": 68337,
+    "projective_measurements": 20448,
+    "sampled_trials": 6000,
+    "context_counts": [
+      1031,
+      981,
+      1000,
+      1034,
+      972,
+      982
+    ],
+    "noisy_successes": 5813,
+    "noisy_failures": 187,
+    "readout_flips": 189,
+    "noise": {
+      "per_observable_flip_probability": 0.01,
+      "idealized_independent_parity_success_probability": 0.970596,
+      "mechanism": "Independent fresh seeded mixer draws, rejection-sampled integer 0..99, flip if zero; independence is a simulation model assumption, not certified entropy."
+    },
+    "qrng": {
+      "seed": 20261110,
+      "consumed_bytes": 232000,
+      "stream_bytes": 1048576,
+      "rejection_sampling_discarded_words": 0,
+      "sha256": "0958317754e27b1decbb1193c2081713780875395e951ba04db54bc1e48d7a15",
+      "classification": "Seeded classical software mixer; no physical quantum entropy"
+    },
+    "wasm_sha256": "96eadbd927e77dbb6d2d6155c43f6440a8030a226b91c5b17d90ff890cfd0950",
+    "setting_scope": "Integer rejection sampling removes modulo mapping bias given uniform input words. This deterministic software stream does not establish experimental measurement independence.",
+    "state_scope": "Finite native simulation probes. Exact context Pauli products supply the algebraic ideal-state claim; these shots are not quantum hardware evidence."
+  },
+  "qgtl": {
+    "status": "pass",
+    "state_dimension": 4,
+    "parameters": 4,
+    "source": "Pinned actual Tsotchke differential_geometry.c",
+    "kernels": [
+      "diffgeo_compute_fubini_study",
+      "diffgeo_compute_berry_curvature"
+    ],
+    "family": "Two native Moonlab Ry(theta)Rz(phi) preparations then fixed CNOT",
+    "tangents": "Central differences of native Moonlab amplitudes",
+    "difference_step": 1e-05,
+    "curvature_convention": "F_ij = -2 Im Q_ij",
+    "max_direct_inner_product_error": 5.551115123125783e-17,
+    "max_analytic_error": 4.8976378508314156e-12,
+    "max_gauge_error": 2.706168622523819e-15,
+    "wrong_berry_sign_error": 0.9424888019299734,
+    "metric": [
+      [
+        0.25000000000131684,
+        -5.379238721453923e-13,
+        -4.978266233462738e-14,
+        9.358279058807356e-13
+      ],
+      [
+        -5.379238721453923e-13,
+        0.2500000000036843,
+        1.252941978905554e-12,
+        -8.818221931430949e-13
+      ],
+      [
+        -4.978266233462738e-14,
+        1.252941978905554e-12,
+        0.032691430158706763,
+        -3.0993263511192026e-13
+      ],
+      [
+        9.358279058807356e-13,
+        -8.818221931430949e-13,
+        -3.0993263511192026e-13,
+        0.222071285436764
+      ]
+    ],
+    "berry_curvature": [
+      [
+        -0.0,
+        8.678804203074165e-13,
+        -0.18080771598269518,
+        8.742024839552862e-13
+      ],
+      [
+        -8.678804203074165e-13,
+        -0.0,
+        7.11251762357319e-13,
+        -0.4712444009641247
+      ],
+      [
+        0.18080771598269518,
+        -7.11251762357319e-13,
+        -0.0,
+        -1.9807524226994005e-12
+      ],
+      [
+        -8.742024839552862e-13,
+        0.4712444009641247,
+        1.9807524226994005e-12,
+        -0.0
+      ]
+    ],
+    "binary_sha256": "f0d6ee3ad3185ef659696df23d2a3e63f64f84ff691209dd466083d611932dad",
+    "build_command": [
+      "gcc",
+      "-O2",
+      "-std=gnu11",
+      "-shared",
+      "-fPIC",
+      "-Ithird_party/qgtl/include",
+      "-Ithird_party/qgtl/stub",
+      "third_party/qgtl/src/quantum_geometric/distributed/differential_geometry.c",
+      "-o",
+      "C:\\Users\\Alexa\\Documents\\Codex\\2026-11-10\\short-answer-none-of-the-three\\outputs\\contextuality-evidence-lab\\build\\stack_diffgeo.dll",
+      "-lm"
+    ],
+    "scope": "Normalized pure-state geometry kernels only; no GPU or distributed execution."
+  },
+  "eshkol": {
+    "status": "pass",
+    "version": "Eshkol Compiler v1.3.6-evolve",
+    "executable_sha256": "4c71b6a06f7df77cc1dda983a963e0c035e39873247b0f1c667e5a1a811df681",
+    "exact_enumeration": {
+      "assignments": 512,
+      "minimum_violations": 1,
+      "violation_histogram": [
+        0,
+        96,
+        0,
+        320,
+        0,
+        96,
+        0
+      ],
+      "singleton_witness_masks": [
+        4,
+        13,
+        69,
+        5,
+        6,
+        0
+      ],
+      "biased_distribution_max_win_numerators": [
+        55,
+        55,
+        55,
+        55,
+        55,
+        55
+      ],
+      "biased_distribution_denominator": 60,
+      "context_floor_numerator": 1,
+      "context_floor_denominator": 12,
+      "classical_win_cap_numerator": 11,
+      "classical_win_cap_denominator": 12,
+      "pass": true
+    }
+  },
+  "artifacts_sha256": {
+    "stack_trials.json": "a372396f4746dac4c6dd0a83abc34438af642316d8398d4d68941e125223e1d8",
+    "stack_shots.json": "7f7e6559e537a29d8d87835d77203f8077b03fcd19bfbfe249d97b678a6816af",
+    "stack_tangents.json": "a796b56b3fce6437b2d985e761a05ab59aa28a5a94223c7ecda28a686112d4f6"
+  },
+  "source_sha256": {
+    "scripts/run_stack.py": "e40ae334075eb174b91b5c33c7fa2cd881c8f8cb9b01a2c43b2317ede932dbba",
+    "src/stack_enumeration.esk": "05d00d9753051d9710563f34e7413a66ba56b1d4821616c1f00cbd9db5039040",
+    "src/stack_moonlab.mjs": "5be75d492e965eaf3be19e1053667abd3e328628a92db9455469fc190bdb1979",
+    "src/stack_qrng.c": "f07ec8ea54471cc40af170e597fcd5c401e8f733e5e0966c81ce2c77f6a649cd",
+    "src/stack_README.md": "a1115b014e699a0661eaf0238e9edb2a0c152f52e7572f699cd0440f8e19e2e3",
+    "third_party/.gitattributes": "5455df3a20643047f29afc847f6bf50b02376481986312ee39459ec7113925e0",
+    "third_party/moonlab/LICENSE": "9954a6f797d6e6c5754ad75304fcafea0bee67ffaaeab78351e2c11e9eb5398c",
+    "third_party/moonlab/moonlab.js": "a59ca4d8ff5d015f3acccec82ddcebf7ed1acbb7a8e4d9433bb2efc7b9905673",
+    "third_party/moonlab/moonlab.wasm": "96eadbd927e77dbb6d2d6155c43f6440a8030a226b91c5b17d90ff890cfd0950",
+    "third_party/moonlab/PROVENANCE.md": "1b0cad4f87de2e450d95a8dac814575654fdca8342a0f7d1505a702c5b7080df",
+    "third_party/qgtl/include/quantum_geometric/distributed/differential_geometry.h": "1e6388bfef71a989abf0297520e113826e57f722419b92096fd8fdf4bedea9c3",
+    "third_party/qgtl/LICENSE": "afa02f43ee4f95406248e5ec107402f133abccdeaa5baa9f5c1247a4fba9c55e",
+    "third_party/qgtl/PROVENANCE.md": "a6d144b0f1b072ca7a5db8754b243c717862eebcae215ada7c03144b0c6756f8",
+    "third_party/qgtl/src/quantum_geometric/distributed/differential_geometry.c": "0e626617064f3a65d52ac863c44c624747dde941d6cd7519e01f1d58c7a3e9ef",
+    "third_party/qgtl/stub/cblas.h": "cf2feffa2a1915a42cd6c53af1c54d8a1b9bd7df72f379df249647d26988c816",
+    "third_party/quantum_rng/LICENSE": "afa02f43ee4f95406248e5ec107402f133abccdeaa5baa9f5c1247a4fba9c55e",
+    "third_party/quantum_rng/PROVENANCE.md": "f7cfe1c674ddbf3fc44bbb204ad18e957954067328278cf12f43226b5bcc4123",
+    "third_party/quantum_rng/src/common/secure_memory.h": "578a182172eb19612dc1326b5d67e5abaf6679366287e0fe6ea70da47324bc11",
+    "third_party/quantum_rng/src/quantum_rng/quantum_rng.c": "86dcf1c4836462f8fdfcdf63c39df0e0d52570786c471290d1ea97f250471bce",
+    "third_party/quantum_rng/src/quantum_rng/quantum_rng.h": "d755273c19fa2384384b51f2012b481506c646e0b292a01fc7ccbf00836845fa",
+    "third_party/README.md": "ac0540925d14aa00bcf826869bba3fcba04297c0efa32d243367fb3d2753075f",
+    "third_party/SHA256SUMS.json": "7f53c56c21aca9d2bafcb0bf9c950a9b01a4a0245b497a13a8fc046074d68a80"
+  }
+}

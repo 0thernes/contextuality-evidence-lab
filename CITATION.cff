@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite this versioned research software and methods preprint."
+type: software
+title: "Contextuality Evidence Lab: Exact Sequential Certificates and a Constructive Setting-Bias Attack"
+authors:
+  - name: "0thernes"
+version: 1.0.0
+date-released: 2026-11-10
+url: "https://0thernes.github.io/contextuality-evidence-lab/"
+repository-code: "https://github.com/0thernes/contextuality-evidence-lab"
+license: MIT
+abstract: "An AI-assisted executable methods artifact combining a Lean 4 finite adaptive-tree evidence theorem, a sharp biased-setting classical bound, exact false-rejection calculations, a classical attack, and a four-component Tsotchke simulation. No hardware contextuality, certified entropy, historical priority or external peer review is claimed."

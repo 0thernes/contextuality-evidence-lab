@@ -1,0 +1,2 @@
+# Preserve exact bytes of source-bound execution records and pinned dependencies.
+* -text

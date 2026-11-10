@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "browser": "158.0.4370.12",
+  "desktop": [
+    1440,
+    1000
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "checks": [
+    "exact enumeration",
+    "setting control",
+    "assumption controls",
+    "three replay traces",
+    "mobile overflow",
+    "paper mathematics",
+    "paper figures"
+  ],
+  "page_errors": []
+}

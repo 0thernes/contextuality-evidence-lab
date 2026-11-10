@@ -1,0 +1,69 @@
+;; Independent 512-assignment enumeration. Observable order:
+;; XI IX XX IZ ZI ZZ XZ ZX YY. Context order is rows, then columns.
+(define (value mask index)
+  (if (= (remainder (quotient mask (expt 2 index)) 2) 0) 1 -1))
+(define (term m a b c) (* (value m a) (value m b) (value m c)))
+(define (success-signs m)
+  (vector (term m 0 1 2) (term m 3 4 5) (term m 6 7 8)
+          (term m 0 3 6) (term m 1 4 7) (- 0 (term m 2 5 8))))
+(define hist (make-vector 7 0))
+(define witnesses (make-vector 6 -1))
+(define weighted-maxima (make-vector 6 0))
+(define min-failed 7)
+(let loop ((m 0))
+  (if (= m 512) 0
+      (let* ((signs (success-signs m))
+             (failed (let count ((i 0) (n 0))
+                       (if (= i 6) n
+                           (count (+ i 1) (+ n (if (= (vector-ref signs i) -1) 1 0)))))))
+        (if (< failed min-failed) (set! min-failed failed) 0)
+        (vector-set! hist failed (+ 1 (vector-ref hist failed)))
+        ;; For each chosen least-probable context, weights are 5/60 there
+        ;; and 11/60 at the other five. All floors are >= 1/12.
+        (let distribution ((j 0))
+          (if (= j 6) 0
+            (let ((win (let sum ((i 0) (n 0))
+                         (if (= i 6) n
+                           (sum (+ i 1)
+                             (+ n (if (= (vector-ref signs i) 1)
+                                      (if (= i j) 5 11) 0)))))))
+              (if (> win (vector-ref weighted-maxima j))
+                  (vector-set! weighted-maxima j win) 0)
+              (distribution (+ j 1)))))
+        (if (= failed 1)
+          (let find ((i 0))
+            (if (= i 6) 0
+              (begin
+                (if (and (= (vector-ref signs i) -1) (= (vector-ref witnesses i) -1))
+                    (vector-set! witnesses i m) 0)
+                (find (+ i 1))))) 0)
+        (loop (+ m 1)))))
+(define all-witnessed
+  (let check ((i 0))
+    (if (= i 6) #t
+      (and (>= (vector-ref witnesses i) 0) (check (+ i 1))))))
+(define pass (and (= min-failed 1) all-witnessed
+                  (let check ((i 0))
+                    (if (= i 6) #t
+                      (and (= (vector-ref weighted-maxima i) 55) (check (+ i 1)))))
+                  (= (vector-ref hist 1) 96) (= (vector-ref hist 3) 320)
+                  (= (vector-ref hist 5) 96)
+                  (= (vector-ref hist 0) 0) (= (vector-ref hist 2) 0)
+                  (= (vector-ref hist 4) 0) (= (vector-ref hist 6) 0)))
+(display "{\"assignments\":512,\"minimum_violations\":") (display min-failed)
+(display ",\"violation_histogram\":[")
+(let print-h ((i 0))
+  (if (= i 7) 0
+    (begin (if (> i 0) (display ",") 0) (display (vector-ref hist i)) (print-h (+ i 1)))))
+(display "],\"singleton_witness_masks\":[")
+(let print-w ((i 0))
+  (if (= i 6) 0
+    (begin (if (> i 0) (display ",") 0) (display (vector-ref witnesses i)) (print-w (+ i 1)))))
+(display "],\"biased_distribution_max_win_numerators\":[")
+(let print-b ((i 0))
+  (if (= i 6) 0
+    (begin (if (> i 0) (display ",") 0) (display (vector-ref weighted-maxima i)) (print-b (+ i 1)))))
+(display "],\"biased_distribution_denominator\":60,\"context_floor_numerator\":1,\"context_floor_denominator\":12,\"classical_win_cap_numerator\":")
+(display (- 12 min-failed))
+(display ",\"classical_win_cap_denominator\":12,\"pass\":")
+(display (if pass "true" "false")) (display "}") (newline)

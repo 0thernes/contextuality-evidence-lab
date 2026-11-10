@@ -1,0 +1,135 @@
+{
+  "status": "pass",
+  "engine": "Pinned Tsotchke Moonlab classical CPU/WASM simulator",
+  "qubits": 2,
+  "observables": [
+    "XI",
+    "IX",
+    "XX",
+    "IZ",
+    "ZI",
+    "ZZ",
+    "XZ",
+    "ZX",
+    "YY"
+  ],
+  "contexts": [
+    {
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "sign": 1
+    },
+    {
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "sign": 1
+    },
+    {
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "sign": 1
+    },
+    {
+      "indices": [
+        0,
+        3,
+        6
+      ],
+      "sign": 1
+    },
+    {
+      "indices": [
+        1,
+        4,
+        7
+      ],
+      "sign": 1
+    },
+    {
+      "indices": [
+        2,
+        5,
+        8
+      ],
+      "sign": -1
+    }
+  ],
+  "exact_operator_sign_checks": 6,
+  "operator_sign_mutation_rejections": 6,
+  "ideal_state_checks": [
+    {
+      "preparation": "zero",
+      "components": 1,
+      "trials": 96,
+      "agreed": 96
+    },
+    {
+      "preparation": "plus",
+      "components": 1,
+      "trials": 96,
+      "agreed": 96
+    },
+    {
+      "preparation": "bell",
+      "components": 1,
+      "trials": 96,
+      "agreed": 96
+    },
+    {
+      "preparation": "complex",
+      "components": 1,
+      "trials": 96,
+      "agreed": 96
+    },
+    {
+      "preparation": "basis",
+      "components": 4,
+      "trials": 384,
+      "agreed": 384
+    }
+  ],
+  "ideal_check_shots": 768,
+  "sampled_ideal_successes": 6000,
+  "max_pauli_expectation_oracle_error": 6.661338147750939e-16,
+  "repeated_measurement_failures": 0,
+  "flipped_sign_shot_rejections": 768,
+  "gate_calls": 68337,
+  "projective_measurements": 20448,
+  "sampled_trials": 6000,
+  "context_counts": [
+    1031,
+    981,
+    1000,
+    1034,
+    972,
+    982
+  ],
+  "noisy_successes": 5813,
+  "noisy_failures": 187,
+  "readout_flips": 189,
+  "noise": {
+    "per_observable_flip_probability": 0.01,
+    "idealized_independent_parity_success_probability": 0.970596,
+    "mechanism": "Independent fresh seeded mixer draws, rejection-sampled integer 0..99, flip if zero; independence is a simulation model assumption, not certified entropy."
+  },
+  "qrng": {
+    "seed": 20261110,
+    "consumed_bytes": 232000,
+    "stream_bytes": 1048576,
+    "rejection_sampling_discarded_words": 0,
+    "sha256": "0958317754e27b1decbb1193c2081713780875395e951ba04db54bc1e48d7a15",
+    "classification": "Seeded classical software mixer; no physical quantum entropy"
+  },
+  "wasm_sha256": "96eadbd927e77dbb6d2d6155c43f6440a8030a226b91c5b17d90ff890cfd0950",
+  "setting_scope": "Integer rejection sampling removes modulo mapping bias given uniform input words. This deterministic software stream does not establish experimental measurement independence.",
+  "state_scope": "Finite native simulation probes. Exact context Pauli products supply the algebraic ideal-state claim; these shots are not quantum hardware evidence."
+}

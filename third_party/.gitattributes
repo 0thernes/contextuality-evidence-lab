@@ -1,0 +1,2 @@
+# Preserve imported bytes so the checked SHA-256 pins survive every clone.
+* -text

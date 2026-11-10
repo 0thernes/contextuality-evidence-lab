@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "isolated_replay_trials": 6000,
+  "trial_bytes_identical": true,
+  "shot_bytes_identical": true,
+  "dependency_mutation_rejected": true,
+  "stale_success_replaced_by_failure": true,
+  "missing_required_eshkol_rejected": true,
+  "trial_sha256": "a372396f4746dac4c6dd0a83abc34438af642316d8398d4d68941e125223e1d8",
+  "source_runner_sha256": "e40ae334075eb174b91b5c33c7fa2cd881c8f8cb9b01a2c43b2317ede932dbba",
+  "note": "Default published stack evidence was not modified during this isolated replay and negative-control audit."
+}

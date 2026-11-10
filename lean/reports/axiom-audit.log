@@ -1,0 +1,96 @@
+Evidence.square_no_all_win (a : Evidence.Assignment) : ∃ c, Evidence.loses a c = true
+Evidence.square_singleton_witness (c : Fin 6) : ∃ a, ∀ (d : Fin 6), Evidence.loses a d = (d == c)
+Evidence.sharp_minimum (p : Fin 6 → ℝ) (c : Fin 6) (hp : ∀ (d : Fin 6), 0 ≤ p d) (hc : ∀ (d : Fin 6), p c ≤ p d) :
+  (∃ a, Evidence.failureProbability p a = p c) ∧ ∀ (a : Evidence.Assignment), p c ≤ Evidence.failureProbability p a
+Evidence.success_upper_bound (p : Fin 6 → ℝ) (a : Evidence.Assignment) (β : ℝ) (hβ : 0 ≤ β)
+  (hp : ∀ (c : Fin 6), β ≤ p c) (hsum : ∑ c, p c = 1) : Evidence.successProbability p a ≤ 1 - β
+Evidence.defect_success_bound (β δ goodSuccess badSuccess : ℝ) (hδ0 : 0 ≤ δ) (hδ1 : δ ≤ 1) (hgood : goodSuccess ≤ 1 - β)
+  (hbad : badSuccess ≤ 1) : (1 - δ) * goodSuccess + δ * badSuccess ≤ 1 - (1 - δ) * β
+Evidence.ideal_observables (i : Fin 9) :
+  Evidence.squareObservable i * Evidence.squareObservable i = 1 ∧
+    Matrix.transpose (Evidence.squareObservable i) = Evidence.squareObservable i
+Evidence.ideal_context_commutation (c : Fin 6) (i j : Fin 3) :
+  Evidence.squareObservable (Evidence.contextTriple c i) * Evidence.squareObservable (Evidence.contextTriple c j) =
+    Evidence.squareObservable (Evidence.contextTriple c j) * Evidence.squareObservable (Evidence.contextTriple c i)
+Evidence.ideal_context_product (c : Fin 6) :
+  Evidence.squareObservable (Evidence.contextTriple c 0) * Evidence.squareObservable (Evidence.contextTriple c 1) *
+      Evidence.squareObservable (Evidence.contextTriple c 2) =
+    if (c == 5) = true then -1 else 1
+Evidence.local_factor_bound (s b A B : ℝ) (hsb : s ≤ b) (hBA : B ≤ A) (hcal : b * A + (1 - b) * B ≤ 1) :
+  s * A + (1 - s) * B ≤ 1
+Evidence.BetTree.finite_hitting_bound (tree : Evidence.BetTree) (h : tree.Valid) (z T : ℝ) (hz : 0 ≤ z) (hT : 0 < T) :
+  tree.hitProbability z T ≤ z / T
+Evidence.naive_attack_prefix_crosses : 100 < (57 / 50) ^ 36
+Evidence.naive_attack_prefix_probability : 43 / 1000 < (11 / 12) ^ 36
+Evidence.concrete_classical_false_positive :
+  ∃ a,
+    43 / 1000 <
+      (Evidence.winPrefixTree 36 (Evidence.successProbability Evidence.biasedContextProbability a) (57 / 50)
+            (3 / 10)).hitProbability
+        1 100
+Evidence.classical_square_node_valid (p : Fin 6 → ℝ) (a : Evidence.Assignment) (β A B : ℝ) (win lose : Evidence.BetTree)
+  (hβ : 0 ≤ β) (hp : ∀ (c : Fin 6), β ≤ p c) (hsum : ∑ c, p c = 1) (hB : 0 ≤ B) (hBA : B ≤ A)
+  (hcal : (1 - β) * A + β * B ≤ 1) (hw : win.Valid) (hl : lose.Valid) :
+  (Evidence.BetTree.node (Evidence.successProbability p a) A B win lose).Valid
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.brecOn.eq"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.expectedWealth.eq_1"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.expectedWealth.eq_2"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.expectedWealth.eq_def"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.expected_wealth_bound"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.expected_wealth_nonnegative"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.finite_hitting_bound"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.hitProbability.eq_1"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.hitProbability.eq_2"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.hitProbability.eq_def"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.hit_probability_le_one"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.hit_probability_nonnegative"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.node.inj"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.node.injEq"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.node.sizeOf_spec"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.stop.sizeOf_spec"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.BetTree.valid_node_of_null_bound"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.all_positive_singleton_loss"}
+AXIOM_AUDIT {"axioms":["propext"],"theorem":"Evidence.biasedContextProbability._proof_1"}
+AXIOM_AUDIT {"axioms":["propext"],"theorem":"Evidence.biasedContextProbability._proof_2"}
+AXIOM_AUDIT {"axioms":["propext"],"theorem":"Evidence.biasedContextProbability._proof_3"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.biasedContextProbability.eq_1"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.biased_all_positive_success"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.biased_context_distribution"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.biased_square_bound_sharp"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.biased_square_success_bound"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.biased_unit_start_threshold"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.calibrated_biased_factors"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.calibrated_uniform_factors"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.classical_square_node_valid"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.concrete_all_positive_false_positive"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.concrete_classical_false_positive"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.concrete_naive_false_positive"}
+AXIOM_AUDIT {"axioms":["propext"],"theorem":"Evidence.contextParity._proof_1"}
+AXIOM_AUDIT {"axioms":["propext"],"theorem":"Evidence.contextTriple._proof_1"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.defect_success_bound"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.failureProbability.eq_1"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.failure_bound_attained"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.failure_lower_bound"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.ideal_context_commutation"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.ideal_context_product"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.ideal_observables"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.local_factor_bound"}
+AXIOM_AUDIT {"axioms":["propext"],"theorem":"Evidence.loses._proof_1"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.mixture_failure_lower_bound"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.naive_attack_prefix_crosses"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.naive_attack_prefix_probability"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.naive_biased_factor_invalid"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.protected_attack_prefix_does_not_cross"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.protected_prefix_threshold_bound"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.protected_prefix_tree_valid"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.sharp_minimum"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.singleton_failure_probability"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.square_no_all_win"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.square_singleton_witness"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.success_add_failure"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.success_nonnegative"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.success_upper_bound"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.winPrefixTree.eq_1"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.winPrefixTree.eq_2"}
+AXIOM_AUDIT {"axioms":["propext","Classical.choice","Quot.sound"],"theorem":"Evidence.winPrefixTree.eq_def"}
+AXIOM_AUDIT_COUNT 61

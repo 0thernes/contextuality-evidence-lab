@@ -1,0 +1,17 @@
+{
+  ".gitattributes": "5455df3a20643047f29afc847f6bf50b02376481986312ee39459ec7113925e0",
+  "moonlab/LICENSE": "9954a6f797d6e6c5754ad75304fcafea0bee67ffaaeab78351e2c11e9eb5398c",
+  "moonlab/moonlab.js": "a59ca4d8ff5d015f3acccec82ddcebf7ed1acbb7a8e4d9433bb2efc7b9905673",
+  "moonlab/moonlab.wasm": "96eadbd927e77dbb6d2d6155c43f6440a8030a226b91c5b17d90ff890cfd0950",
+  "moonlab/PROVENANCE.md": "1b0cad4f87de2e450d95a8dac814575654fdca8342a0f7d1505a702c5b7080df",
+  "qgtl/include/quantum_geometric/distributed/differential_geometry.h": "1e6388bfef71a989abf0297520e113826e57f722419b92096fd8fdf4bedea9c3",
+  "qgtl/LICENSE": "afa02f43ee4f95406248e5ec107402f133abccdeaa5baa9f5c1247a4fba9c55e",
+  "qgtl/PROVENANCE.md": "a6d144b0f1b072ca7a5db8754b243c717862eebcae215ada7c03144b0c6756f8",
+  "qgtl/src/quantum_geometric/distributed/differential_geometry.c": "0e626617064f3a65d52ac863c44c624747dde941d6cd7519e01f1d58c7a3e9ef",
+  "qgtl/stub/cblas.h": "cf2feffa2a1915a42cd6c53af1c54d8a1b9bd7df72f379df249647d26988c816",
+  "quantum_rng/LICENSE": "afa02f43ee4f95406248e5ec107402f133abccdeaa5baa9f5c1247a4fba9c55e",
+  "quantum_rng/PROVENANCE.md": "f7cfe1c674ddbf3fc44bbb204ad18e957954067328278cf12f43226b5bcc4123",
+  "quantum_rng/src/common/secure_memory.h": "578a182172eb19612dc1326b5d67e5abaf6679366287e0fe6ea70da47324bc11",
+  "quantum_rng/src/quantum_rng/quantum_rng.c": "86dcf1c4836462f8fdfcdf63c39df0e0d52570786c471290d1ea97f250471bce",
+  "quantum_rng/src/quantum_rng/quantum_rng.h": "d755273c19fa2384384b51f2012b481506c646e0b292a01fc7ccbf00836845fa"
+}

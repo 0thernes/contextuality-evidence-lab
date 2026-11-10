@@ -1,0 +1,1 @@
+{"assignments":512,"minimum_violations":1,"violation_histogram":[0,96,0,320,0,96,0],"singleton_witness_masks":[4,13,69,5,6,0],"biased_distribution_max_win_numerators":[55,55,55,55,55,55],"biased_distribution_denominator":60,"context_floor_numerator":1,"context_floor_denominator":12,"classical_win_cap_numerator":11,"classical_win_cap_denominator":12,"pass":true}

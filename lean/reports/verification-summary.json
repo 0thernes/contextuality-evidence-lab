@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "lean_version": "4.35.0",
+  "authored_theorems": 39,
+  "audited_propositions": 61,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "probability_domain": "real",
+  "stopping_scope": "every finite binary tree",
+  "hardware_claim": false,
+  "source_hashes": [
+    {
+      "path": "Evidence.lean",
+      "sha256": "384f159eafa86c6b6357bf7f7e7989c7ad73c2f4c0a13e4e6cc9a8d048ae321d"
+    },
+    {
+      "path": "Verification.lean",
+      "sha256": "4804bc65a5dece4026382857ba8e53f14f2d46d6d4d1dc47bbc759abd25bf660"
+    },
+    {
+      "path": "lakefile.toml",
+      "sha256": "fbc2ab1746d2a99d4262992fd8cd5b5f7271d9947f8b6766a10212a00ef2a52d"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "30e8fa9dddec23bfe7ccf66ad4bd8ad41e4ae9d67e16071f02fd54ef407f9fbe"
+    },
+    {
+      "path": "Evidence/Bridge.lean",
+      "sha256": "ef8745d87179c5c30f6a505ae6839e3527e401adf9439ce207fd3914b8b87ded"
+    },
+    {
+      "path": "Evidence/Physical.lean",
+      "sha256": "5ba3df2dfe7998259b839084f0facef87a132a08e84f676edf67219d0dbd45b0"
+    },
+    {
+      "path": "Evidence/Sequential.lean",
+      "sha256": "200b89965d05d342c56159e2fe86499decd008288efcc088c61ff32089c6f7ed"
+    },
+    {
+      "path": "Evidence/Square.lean",
+      "sha256": "a069ca5d214bc84e0ac7acfdf945d614cc27b684db87f761358be1cefdebf3b7"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+// Run after serving docs/: LAB_URL=http://127.0.0.1:8837 node tests/browser.test.mjs
+import {createRequire} from 'node:module';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const require=createRequire(path.join(process.env.RENDER_RUNTIME_MODULES||root,'package.json'));
+const {chromium}=require('playwright');
+const browser=await chromium.launch({headless:true,...(process.env.BROWSER_CHANNEL?{channel:process.env.BROWSER_CHANNEL}:{})});
+try{
+ const page=await browser.newPage({viewport:{width:1440,height:1000}});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.env.LAB_URL||'http://127.0.0.1:8837',{waitUntil:'networkidle'});
+ await page.getByRole('button',{name:'Check all 512 assignments'}).click();
+ await page.getByText('Verified in this browser:',{exact:false}).waitFor();
+ assert.match(await page.locator('#enumeration').textContent(),/96 tables fail 1 context, 320 fail 3, 96 fail 5/);
+ assert.equal(await page.locator('#naive-risk').textContent(),'97.24%');
+ assert.match(await page.locator('#replay-summary').textContent(),/trial 237/);
+ await page.getByRole('button',{name:'Flip XI',exact:true}).click();
+ assert.equal(await page.locator('#square button').first().locator('b').textContent(),'−1');
+ await page.locator('#floor').fill('10');await page.locator('#floor').dispatchEvent('input');
+ assert.match(await page.locator('#floor-label').textContent(),/16.67%/);
+ await page.getByRole('button',{name:'Claim a false setting floor'}).click();
+ assert.match(await page.locator('#control-result').textContent(),/CERTIFICATE REJECTED/);
+ await page.getByRole('button',{name:'Reveal the setting to the device'}).click();
+ assert.match(await page.locator('#control-result').textContent(),/OUTSIDE THE MODEL.*129/);
+ await page.getByRole('button',{name:'Replay traces'}).click();
+ await page.waitForTimeout(1900);
+ assert.equal(await page.locator('#chart polyline').count(),3);
+ await page.screenshot({path:path.join(root,'results/demo-desktop.png'),fullPage:true});
+ await page.setViewportSize({width:390,height:844});
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
+ await page.screenshot({path:path.join(root,'results/demo-mobile.png'),fullPage:true});
+ await page.goto((process.env.LAB_URL||'http://127.0.0.1:8837')+'/paper/',{waitUntil:'networkidle'});
+ assert.ok(await page.locator('.katex').count()>50);
+ assert.equal(await page.locator('img').evaluateAll(images=>images.every(i=>i.complete&&i.naturalWidth>0)),true);
+ assert.deepEqual(errors,[]);
+ await fs.writeFile(path.join(root,'results/browser_verification.json'),JSON.stringify({status:'passed',browser:browser.version(),desktop:[1440,1000],mobile:[390,844],checks:['exact enumeration','setting control','assumption controls','three replay traces','mobile overflow','paper mathematics','paper figures'],page_errors:errors},null,2)+'\n');
+ console.log('Browser checks passed: exact enumeration, controls, replay, desktop/mobile, paper math and figures.');
+}finally{await browser.close();}

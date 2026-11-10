@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "assignment_checks": 512,
+  "exact_trial_replays": 18000,
+  "replayed_sources": [
+    "Moonlab noisy",
+    "classical naive",
+    "classical protected"
+  ],
+  "scope": "Independent signed-product enumeration, certificate arithmetic, exact threshold replay and transcript hash. Does not certify empirical independence or recompute the 1000-step DP."
+}

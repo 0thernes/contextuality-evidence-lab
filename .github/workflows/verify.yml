@@ -1,0 +1,49 @@
+name: Verify evidence and formal proofs
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exact checks and adversarial tests
+        run: python -m unittest discover -s tests -v
+      - name: Replay committed native shot evidence
+        run: |
+          cp results/experiment.json /tmp/evidence-baseline.json
+          python scripts/run_experiment.py
+          python scripts/verify_artifact.py
+          node tests/demo.test.mjs
+      - name: Fail closed under optimized Python
+        run: |
+          if python -O scripts/verify_artifact.py; then exit 1; fi
+          if python -O scripts/run_experiment.py; then exit 1; fi
+      - name: Confirm deterministic evidence replay
+        run: python scripts/check_reproduction.py /tmp/evidence-baseline.json results/experiment.json
+  lean:
+    runs-on: ubuntu-latest
+    env:
+      LEAN_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: lean
+          auto-config: false
+          build: true
+          build-args: '--wfail'
+          use-mathlib-cache: true
+      - name: Audit all project theorem axioms
+        working-directory: lean
+        run: lake env lean Verification.lean
