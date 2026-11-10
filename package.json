@@ -4,5 +4,5 @@
   "private": true,
   "type": "module",
   "scripts": {"test": "node tests/demo.test.mjs", "paper": "node scripts/render_paper.mjs"},
-  "devDependencies": {"katex": "0.16.25", "marked": "17.0.5", "playwright": "1.62.1"}
+  "devDependencies": {"katex": "0.18.2", "marked": "17.0.5", "playwright": "1.62.1"}
 }
