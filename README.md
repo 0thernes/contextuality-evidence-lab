@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> **Consolidated & Archived (2026-11-24):** This repository has been superseded by and consolidated into **[0thernes/pauli-contextuality-lab](https://github.com/0thernes/pauli-contextuality-lab)** (`v2.0.0`, Apache-2.0 code + CC-BY-4.0 papers, single Lean 4.35.0 + Mathlib `v4.35.0` workspace, 6-kernel comparator, and Lean Blueprint) under Track 3 (`tracks/sequential-evidence/`, `lean/Evidence/`, `papers/sequential-evidence/`).
+> All historical commits, tags, papers, and proofs remain preserved here read-only so existing links, `0thernes-research-archive` submodules, and Software Heritage SWHIDs never break.
+
 # Contextuality Evidence Lab
 
 **A classical device makes a miscalibrated “1%” test reject 97.24% of the time.
